@@ -1,5 +1,3 @@
-Created by Codex, on [[2026-06-21-Sun]]
-
 # Substack Feed Blocker
 
 Use Substack without the Notes feed.
