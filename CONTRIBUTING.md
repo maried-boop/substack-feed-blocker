@@ -1,5 +1,3 @@
-Created by Codex, on [[2026-10-31-Sat]]
-
 # Contributing
 
 Bug reports and focused pull requests are welcome through [GitHub Issues](https://github.com/maried-boop/substack-feed-blocker/issues) and [Pull requests](https://github.com/maried-boop/substack-feed-blocker/pulls).

@@ -1,5 +1,3 @@
-Created by Codex, on [[2026-10-31-Sat]]
-
 # Changelog
 
 This log covers the generic public distribution. The extension version is recorded in `manifest.json`.

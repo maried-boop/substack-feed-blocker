@@ -1,5 +1,3 @@
-Created by Codex, on [[2026-10-31-Sat]]
-
 # Privacy
 
 Substack Feed Blocker processes its settings locally in your browser. The extension contains no analytics, advertising, remote scripts or data-collection service.
