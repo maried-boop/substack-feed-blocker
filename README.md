@@ -4,7 +4,21 @@ Created by Codex, on [[2026-06-21-Sun]]
 
 A small Chrome extension that hides the Substack Notes feed while keeping notifications, subscriptions, chat, search, profiles, publishing tools and individual posts usable.
 
-The public version contains no preloaded profile links, newsletter links or reading recommendations.
+## In use
+
+These demos use sample content and the extension's actual code.
+
+**Blocking on:** the Notes feed disappears while the rest of Substack stays available.
+
+![Substack Feed Blocker with blocking on](docs/screenshots/feed-hidden.png)
+
+**Optional links:** add shortcuts to the profiles, publications or pages you choose.
+
+![Optional links panel with example shortcuts](docs/screenshots/optional-links.png)
+
+**Blocking off:** click the toolbar icon to bring the Notes feed back.
+
+![The sample Notes feed with blocking off](docs/screenshots/feed-visible.png)
 
 ## Install in Chrome
 
