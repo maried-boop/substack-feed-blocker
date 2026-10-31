@@ -1,0 +1,128 @@
+/* Substack exposes Notes as its own accessible region. Hiding only this region
+   leaves Activity notifications, subscriptions, profile, and Create untouched. */
+html.substack-feed-blocker-enabled [role="region"][aria-label="Notes feed"] {
+  display: none !important;
+}
+
+html:not(.substack-feed-blocker-enabled) #substack-feed-blocker-safe-links-panel {
+  display: none !important;
+}
+
+#substack-feed-blocker-safe-links-panel {
+  --sfb-panel-bg: #fffdf8;
+  --sfb-card-bg: #fffefa;
+  --sfb-text: #2d2a26;
+  --sfb-muted: #71695f;
+  --sfb-border: rgba(64, 55, 45, 0.18);
+  --sfb-card-border: rgba(64, 55, 45, 0.12);
+  --sfb-shadow: rgba(39, 32, 24, 0.07);
+
+  box-sizing: border-box;
+  color-scheme: light dark;
+  margin: 24px auto 32px;
+  width: min(92vw, 920px);
+  max-width: calc(100% - 32px);
+  border: 1px solid var(--sfb-border);
+  border-radius: 8px;
+  background: var(--sfb-panel-bg);
+  color: var(--sfb-text);
+  padding: 26px 28px 30px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  box-shadow: 0 12px 30px var(--sfb-shadow);
+}
+
+#substack-feed-blocker-safe-links-panel h2 {
+  margin: 0 0 22px;
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+#substack-feed-blocker-safe-links-panel .safe-links-content {
+  display: grid;
+  gap: 24px;
+}
+
+#substack-feed-blocker-safe-links-panel .safe-links-group {
+  display: grid;
+  gap: 10px;
+}
+
+#substack-feed-blocker-safe-links-panel h3 {
+  margin: 0;
+  color: var(--sfb-muted);
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+#substack-feed-blocker-safe-links-panel p {
+  margin: 0 0 14px;
+  color: var(--sfb-muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+#substack-feed-blocker-safe-links-panel ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#substack-feed-blocker-safe-links-panel li {
+  border: 1px solid var(--sfb-card-border);
+  border-radius: 6px;
+  background: var(--sfb-card-bg);
+  color: var(--sfb-text);
+  font-size: 15px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+#substack-feed-blocker-safe-links-panel a {
+  display: block;
+  min-height: 44px;
+  padding: 12px 14px;
+  color: inherit;
+  text-decoration: none;
+}
+
+#substack-feed-blocker-safe-links-panel a:hover,
+#substack-feed-blocker-safe-links-panel a:focus {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  #substack-feed-blocker-safe-links-panel {
+    margin: 16px auto 24px;
+    width: min(100% - 24px, 920px);
+    padding: 20px;
+  }
+
+  #substack-feed-blocker-safe-links-panel h2 {
+    font-size: 19px;
+  }
+
+  #substack-feed-blocker-safe-links-panel ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  #substack-feed-blocker-safe-links-panel {
+    --sfb-panel-bg: #191714;
+    --sfb-card-bg: #211f1b;
+    --sfb-text: #eee7dc;
+    --sfb-muted: #b7aa98;
+    --sfb-border: rgba(238, 231, 220, 0.16);
+    --sfb-card-border: rgba(238, 231, 220, 0.11);
+    --sfb-shadow: rgba(0, 0, 0, 0.22);
+  }
+}
