@@ -62,6 +62,20 @@ Click the toolbar icon to switch between them. The setting stays saved when you 
 
 ![The Notes feed visible with blocking switched off](docs/screenshots/feed-visible.png)
 
+## Update or remove the extension
+
+To update, download and extract the latest source. Back up any shortcuts you added to `content.js`, replace the files in the folder Chrome already loads, then restore your shortcuts. Click **Reload** for the extension at `chrome://extensions` and reload Substack tabs. Unpacked extensions do not update automatically.
+
+To uninstall, click **Remove** for Substack Feed Blocker at `chrome://extensions`, then reload Substack. You can delete the downloaded folder after removing the extension.
+
+## Troubleshooting
+
+- **The feed is still visible:** check that the badge says ON, reload the extension at `chrome://extensions`, then reload the Substack tab. If it persists, Substack may have changed its page structure.
+- **Chrome cannot load the extension:** select the extracted folder that contains `manifest.json`, rather than the ZIP file or a parent folder.
+- **Your shortcuts do not appear:** check the array syntax in `content.js`, reload the extension and reload Substack. The panel appears only when blocking is ON, links are configured and a Notes feed region is present.
+
+For a reproducible problem, [open an issue](https://github.com/maried-boop/substack-feed-blocker/issues) with the details described in [Contributing](CONTRIBUTING.md#report-a-problem).
+
 ## Everyday uses
 
 - Open your subscriptions and choose something to read without browsing the homepage feed.
@@ -102,7 +116,7 @@ Leave the array empty if you only want the feed hidden. Keep personal link lists
 - Does not collect browsing data, use analytics or send data to an external service
 - Opens any shortcuts you configure as ordinary browser links
 
-The declared permissions are local preference storage and access to Substack pages.
+The declared permissions are local preference storage and access to Substack pages. Read the [privacy document](PRIVACY.md) for details about local settings, page access and data removal.
 
 ## Compatibility and limitations
 
@@ -123,6 +137,12 @@ substack-feed-blocker/
 ```
 
 Current extension version: **1.4.8**.
+
+## Documentation and contributions
+
+- [Privacy](PRIVACY.md)
+- [Contributing and reporting bugs](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
 
 ## Author
 
