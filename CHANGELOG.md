@@ -6,6 +6,7 @@ This log covers the generic public distribution. The extension version is record
 
 ## Unreleased
 
+- Added the MIT License with copyright attribution to Marie Drouvin.
 - Added standalone privacy and contribution documentation.
 - Added this changelog and README guidance for updates, removal and troubleshooting.
 

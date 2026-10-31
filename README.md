@@ -147,3 +147,9 @@ Current extension version: **1.4.8**.
 ## Author
 
 Built by Marie Drouvin with Codex.
+
+## License
+
+Released under the [MIT License](LICENSE).
+
+Copyright (c) 2026 Marie Drouvin.
