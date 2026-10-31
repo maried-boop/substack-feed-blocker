@@ -2,69 +2,130 @@ Created by Codex, on [[2026-06-21-Sun]]
 
 # Substack Feed Blocker
 
-A small Chrome extension that hides the Substack Notes feed while keeping notifications, subscriptions, chat, search, profiles, publishing tools and individual posts usable.
+Use Substack without the Notes feed.
 
-## In use
+A small Chrome extension that hides the scrolling Notes feed while keeping subscriptions, notifications, chat, search, profiles and writing tools available. Bring the feed back whenever you want with one click.
 
-These demos use sample content and the extension's actual code.
+[Download Substack Feed Blocker](https://github.com/maried-boop/substack-feed-blocker/archive/refs/heads/main.zip)
 
-**Blocking on:** the Notes feed disappears while the rest of Substack stays available.
+![Substack with the Notes feed hidden](docs/screenshots/feed-hidden.png)
 
-![Substack Feed Blocker with blocking on](docs/screenshots/feed-hidden.png)
+*Illustrative sample page rendered with the extension's actual code. The screenshots use example content.*
 
-**Optional links:** add shortcuts to the profiles, publications or pages you choose.
+## Who this is for
 
-![Optional links panel with example shortcuts](docs/screenshots/optional-links.png)
+Substack Feed Blocker is for people who want to read their subscriptions, write, or check in with particular writers without getting pulled into the Notes feed.
 
-**Blocking off:** click the toolbar icon to bring the Notes feed back.
+You can keep using Substack for the things you came to do, and choose when to turn the feed back on.
 
-![The sample Notes feed with blocking off](docs/screenshots/feed-visible.png)
+## What it does
 
-## Install in Chrome
+- Hides the Notes feed automatically
+- Keeps the rest of Substack accessible
+- Toggles blocking from the extension's toolbar icon
+- Shows an ON/OFF badge and remembers your choice locally
+- Optionally replaces the empty space with shortcuts you choose
+- Supports light and dark appearances for the optional links panel
 
-1. Use **Code > Download ZIP** in this repository, then extract the downloaded ZIP. You can also clone the repository.
-2. Open `chrome://extensions` in Chrome.
-3. Turn on **Developer mode**.
-4. Click **Load unpacked** and select the extracted folder containing `manifest.json`.
-5. Pin the extension if you want its switch to stay visible, then reload open Substack tabs.
+![An optional shortcuts panel with example links](docs/screenshots/optional-links.png)
 
-Keep that folder in place while the extension is installed. There is no build step or package installation. This is an unpacked extension, not a Chrome Web Store listing.
+The shortcuts above are examples of what you can add. The extension starts with the feed hidden and no shortcuts panel.
 
-The feed is hidden by default. Clicking the toolbar icon toggles blocking, and the ON/OFF badge shows the current state. The preference is saved locally.
+## How it works
 
-## Optional links
+1. The extension runs on Substack pages and hides the region labelled `Notes feed`.
+2. Clicking its toolbar icon switches blocking on or off and saves that choice locally.
+3. If you add your own shortcuts in `content.js`, a links panel appears in place of the feed while blocking is on.
 
-The public extension starts with an empty `SAFE_LINK_SECTIONS` array in `content.js`; no links panel is shown while it is empty. To add your own links, use this structure:
+There is no account setup, API key, build step or package installation.
+
+## Installation
+
+### Google Chrome on desktop
+
+1. [Download the extension](https://github.com/maried-boop/substack-feed-blocker/archive/refs/heads/main.zip) and extract the ZIP.
+2. Move the extracted folder somewhere you intend to keep it.
+3. Open `chrome://extensions` in Chrome.
+4. Turn on **Developer mode**.
+5. Click **Load unpacked** and select the extracted folder containing `manifest.json`.
+6. Pin **Substack Feed Blocker** from Chrome's Extensions menu if you want the toggle in your toolbar.
+7. Reload any open Substack tabs.
+
+Keep the folder in place while the extension is installed. This download is an unpacked extension; it is not a Chrome Web Store listing.
+
+### Using the toggle
+
+| Toolbar badge | What happens |
+| --- | --- |
+| **ON** | The Notes feed is hidden. Optional shortcuts appear if you have configured them. |
+| **OFF** | The Notes feed is visible and the shortcuts panel is hidden. |
+
+Click the toolbar icon to switch between them. The setting stays saved when you restart Chrome.
+
+![The Notes feed visible with blocking switched off](docs/screenshots/feed-visible.png)
+
+## Everyday uses
+
+- Open your subscriptions and choose something to read without browsing the homepage feed.
+- Check notifications or chat without entering the Notes stream.
+- Open Substack to write, then leave when you are done.
+- Turn the feed back on for a deliberate browse, then hide it again.
+
+## Add your own shortcuts
+
+Open `content.js` in a text editor and replace the empty `SAFE_LINK_SECTIONS` array with your own groups and links. For example:
 
 ```js
 const SAFE_LINK_SECTIONS = [
   {
-    title: "My links",
+    title: "My places",
     links: [
-      { label: "Example", url: "https://example.org/" }
+      { label: "My newsletter", url: "https://example.org/newsletter" },
+      { label: "Reading list", url: "https://example.org/reading" }
+    ]
+  },
+  {
+    title: "People to browse",
+    links: [
+      { label: "A writer I follow", url: "https://example.org/writer" }
     ]
   }
 ];
 ```
 
-After editing, reload the extension in `chrome://extensions`, then reload Substack. Keep your personal copy separate from contributions to this repository.
+Replace the example labels and URLs with your choices. Save the file, click **Reload** for the extension at `chrome://extensions`, then reload Substack.
+
+Leave the array empty if you only want the feed hidden. Keep personal link lists in your own local copy when contributing to this repository.
 
 ## Privacy and permissions
 
-The extension runs only on `https://substack.com/*`. It stores one local on/off preference and does not send browsing data to any service. Its permissions are local preference storage and access to Substack. Any optional links are ordinary browser links.
+- Runs only on `https://substack.com/*`
+- Uses Chrome's local storage to remember whether blocking is enabled
+- Does not collect browsing data, use analytics or send data to an external service
+- Opens any shortcuts you configure as ordinary browser links
 
-## Files
+The declared permissions are local preference storage and access to Substack pages.
 
-- `manifest.json`: Manifest V3 configuration, permissions and icons.
-- `background.js`: toolbar toggle and saved preference.
-- `content.js`: feed detection and optional links.
-- `content.css`: feed hiding and optional light/dark links panel.
-- `icons/`: extension artwork.
+## Compatibility and limitations
 
-## Publication history
+The documented installation is for desktop Google Chrome using Manifest V3. Other browsers and mobile installations have not been verified.
 
-- [[2026-10-31-Sat]] - Public version 1.4.8 starts with no personal links or recommendations. The optional panel remains hidden until a user adds links. JavaScript syntax, default blocking behavior and manifest references were checked.
+The extension identifies the feed by Substack's accessible `Notes feed` region. If Substack changes that structure, its selector may need updating in `content.css` and `content.js`. The extension's toolbar toggle controls the feed; it does not change your Substack subscriptions or notification settings.
 
-## If Substack changes its site
+## What's included
 
-The extension targets the accessible `Notes feed` region. If the feed reappears after a redesign, check its current accessible label and update the selector in `content.css` and `content.js`.
+```text
+substack-feed-blocker/
+|-- manifest.json
+|-- background.js
+|-- content.js
+|-- content.css
+|-- icons/
+`-- docs/screenshots/
+```
+
+Current extension version: **1.4.8**.
+
+## Author
+
+Built by Marie Drouvin with Codex.
